@@ -1,0 +1,63 @@
+﻿@model ProductsandCategories.Models.Categories
+
+@*@{
+    ViewData["Title"] = "DetailsCategories";
+}*@
+
+<h1>DetailsCategories</h1>
+
+ 
+
+@*<partial name="Show_Categories" model="Model.Get_Products" />*@
+
+@*<partial name="Show_Categories" model="Model.Get_Categories" />*@
+
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+    </dl>
+    
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.CategoriesId">Edit</a> |*@
+    <a asp-action="ViewProducts">ViewProducts</a> |
+    <a asp-action="ViewCategories">ViewCategories</a>
+</div>
+
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        <h2>Products</h2>
+        @foreach (var item in Model.Get_Products)
+        {
+            <p>@item.Products.Name</p>
+        }
+
+    </div>
+    <div class="col-md-6">
+        @*@{
+            ViewBag.ProductId = Model.CategoriesId;
+        }*@
+        <partial name="Link_Category_Product" model="null" />
+    </div>
+</div>
